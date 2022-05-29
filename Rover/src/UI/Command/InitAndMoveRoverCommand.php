@@ -4,7 +4,7 @@ namespace App\UI\Command;
 
 use App\Core\Rover\Rover;
 use App\Core\Map\ValueObject\Map;
-use App\Core\Rover\ValueObject\Movement;
+use App\Core\Rover\ValueObject\MovementInstructions;
 use App\Core\Rover\Service\MoveRoverService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -34,10 +34,10 @@ class InitAndMoveRoverCommand extends Command
         $map = Map::fromCommandInput($input->getArgument('map_height_and_width'));
 
         $firstRover = Rover::fromCommandInput($input->getArgument('first_rover_coordinates'));
-        $firstRoverMovement = Movement::fromCommandInput($input->getArgument('first_rover_moves'));
+        $firstRoverMovement = MovementInstructions::fromCommandInput($input->getArgument('first_rover_moves'));
 
         $secondRover = Rover::fromCommandInput($input->getArgument('second_rover_coordinates'));
-        $secondRoverMovement = Movement::fromCommandInput($input->getArgument('second_rover_moves'));
+        $secondRoverMovement = MovementInstructions::fromCommandInput($input->getArgument('second_rover_moves'));
 
         $moveRoverService = new MoveRoverService($map);
 

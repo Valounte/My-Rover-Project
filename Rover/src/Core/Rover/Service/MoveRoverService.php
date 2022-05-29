@@ -4,7 +4,7 @@ namespace App\Core\Rover\Service;
 
 use App\Core\Rover\Rover;
 use App\Core\Map\ValueObject\Map;
-use App\Core\Rover\ValueObject\Movement;
+use App\Core\Rover\ValueObject\MovementInstructions;
 
 final class MoveRoverService
 {
@@ -27,7 +27,7 @@ final class MoveRoverService
     ) {
     }
 
-    public function moveRover(Rover $rover, Movement $movement): Rover
+    public function moveRover(Rover $rover, MovementInstructions $movement): Rover
     {
         $movement = $movement->getMovement();
         $this->xPosition = $rover->getX();
@@ -36,9 +36,9 @@ final class MoveRoverService
 
         for ($i = 0; $i < strlen($movement); $i++) {
             match ($movement[$i]) {
-                 Movement::RIGHT => $this->turnRight(),
-                 Movement::LEFT => $this->turnLeft(),
-                 Movement::MOVE => $this->move(),
+                MovementInstructions::RIGHT => $this->turnRight(),
+                MovementInstructions::LEFT => $this->turnLeft(),
+                MovementInstructions::MOVE => $this->move(),
             };
         }
 

@@ -3,7 +3,7 @@
 namespace App\Tests\Unit\Core\Rover\ValueObject;
 
 use PHPUnit\Framework\TestCase;
-use App\Core\Rover\ValueObject\Movement;
+use App\Core\Rover\ValueObject\MovementInstructions;
 
 final class MovementTest extends TestCase
 {
@@ -12,7 +12,7 @@ final class MovementTest extends TestCase
      */
     public function test_init_movement_from_command(string $movement, string $expectedMovement): void
     {
-        $movement = Movement::fromCommandInput($movement);
+        $movement = MovementInstructions::fromCommandInput($movement);
 
         $this->assertEquals($expectedMovement, $movement->getMovement());
     }

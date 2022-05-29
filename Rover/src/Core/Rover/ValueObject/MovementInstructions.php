@@ -2,7 +2,7 @@
 
 namespace App\Core\Rover\ValueObject;
 
-final class Movement
+final class MovementInstructions
 {
     const RIGHT = "R";
 
